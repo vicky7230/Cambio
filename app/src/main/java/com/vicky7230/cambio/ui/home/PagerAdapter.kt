@@ -1,12 +1,12 @@
-package com.vicky7230.aqua.ui.home
+package com.vicky7230.cambio.ui.home
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.vicky7230.aqua.ui.home.currencies.CurrenciesFragment
-import com.vicky7230.aqua.ui.home.exchangeRates.ExchangeRatesFragment
-import com.vicky7230.aqua.ui.home.markets.MarketsFragment
-import com.vicky7230.aqua.ui.home.settings.SettingsFragment
+import com.vicky7230.cambio.ui.home.currencies.CurrenciesFragment
+import com.vicky7230.cambio.ui.home.exchangeRates.ExchangeRatesFragment
+import com.vicky7230.cambio.ui.home.markets.MarketsFragment
+import com.vicky7230.cambio.ui.home.settings.SettingsFragment
 
 class PagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 

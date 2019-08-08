@@ -1,4 +1,4 @@
-package com.vicky7230.aqua.ui.home
+package com.vicky7230.cambio.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
-import com.vicky7230.aqua.R
-import com.vicky7230.aqua.ui.home.currencies.CurrenciesFragment
-import com.vicky7230.aqua.ui.home.exchangeRates.ExchangeRatesFragment
-import com.vicky7230.aqua.ui.home.markets.MarketsFragment
+import com.vicky7230.cambio.R
+import com.vicky7230.cambio.ui.home.currencies.CurrenciesFragment
+import com.vicky7230.cambio.ui.home.exchangeRates.ExchangeRatesFragment
+import com.vicky7230.cambio.ui.home.markets.MarketsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import java.util.*
 

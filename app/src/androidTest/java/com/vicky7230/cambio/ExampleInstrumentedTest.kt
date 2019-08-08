@@ -1,4 +1,4 @@
-package com.vicky7230.aqua
+package com.vicky7230.cambio
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

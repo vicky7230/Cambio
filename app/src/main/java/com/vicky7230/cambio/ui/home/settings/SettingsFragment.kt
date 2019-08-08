@@ -1,4 +1,4 @@
-package com.vicky7230.aqua.ui.home.settings
+package com.vicky7230.cambio.ui.home.settings
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.vicky7230.aqua.R
+import com.vicky7230.cambio.R
 
 class SettingsFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.vicky7230.aqua.ui.home.markets
+package com.vicky7230.cambio.ui.home.markets
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.vicky7230.aqua.R
+import com.vicky7230.cambio.R
 
 class MarketsFragment : Fragment() {
 

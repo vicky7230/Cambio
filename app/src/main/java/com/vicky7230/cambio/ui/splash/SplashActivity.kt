@@ -1,10 +1,10 @@
-package com.vicky7230.aqua.ui.splash
+package com.vicky7230.cambio.ui.splash
 
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.vicky7230.aqua.R
-import com.vicky7230.aqua.ui.home.HomeActivity
+import com.vicky7230.cambio.R
+import com.vicky7230.cambio.ui.home.HomeActivity
 
 
 class SplashActivity : AppCompatActivity() {

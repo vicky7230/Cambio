@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.vicky7230.aqua">
+    package="com.vicky7230.cambio">
 
     <application
-        android:name=".Aqua"
+        android:name="com.vicky7230.cambio.Aqua"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.vicky7230.aqua.ui.splash.SplashActivity"
+            android:name="com.vicky7230.cambio.ui.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vicky7230.aqua.ui.home.HomeActivity"
+            android:name="com.vicky7230.cambio.ui.home.HomeActivity"
             android:screenOrientation="portrait" />
     </application>
 </manifest>
