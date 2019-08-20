@@ -9,7 +9,7 @@ import com.vicky7230.cambio.ui.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    lateinit var handler: Handler
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

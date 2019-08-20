@@ -13,7 +13,7 @@ class PagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> {
-                return CurrenciesFragment()
+                return CurrenciesFragment.newInstance()
             }
 
             1 -> {
