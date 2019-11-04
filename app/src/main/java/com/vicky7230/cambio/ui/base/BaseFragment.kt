@@ -10,7 +10,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.vicky7230.cambio.utils.CommonUtils
-import retrofit2.HttpException
 
 /**
  * Created by vicky on 11/2/18.
@@ -75,20 +74,6 @@ abstract class BaseFragment : Fragment() {
                 getBaseActivity()!!,
                 it
             ) != PackageManager.PERMISSION_GRANTED
-        }
-    }
-
-    fun handleApiError(throwable: Throwable) {
-        if (throwable is HttpException) {
-            when (throwable.code()) {
-                401 -> {
-                    showError("sessionId expired or invalid.")
-                    // TODO
-                    // log out the user and clear his data
-                }
-            }
-        } else {
-            showError(throwable.message ?: "")
         }
     }
 }

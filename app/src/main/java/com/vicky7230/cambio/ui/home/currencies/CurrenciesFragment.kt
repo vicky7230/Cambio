@@ -45,10 +45,24 @@ class CurrenciesFragment : BaseFragment() {
     }
 
     override fun setUp(view: View) {
-        currenciesViewModel.liveData.observe(this, Observer {
+
+        currenciesViewModel.loading.observe(this, Observer {
+            if (it)
+                showLoading()
+            else
+                hideLoading()
+        })
+
+        currenciesViewModel.error.observe(this, Observer {
+            showError(it)
+        })
+
+        currenciesViewModel.currencies.observe(this, Observer {
             showMessage("Livedata updated")
         })
+
         showLoading()
+
         currenciesViewModel.getCurrencies()
     }
 }

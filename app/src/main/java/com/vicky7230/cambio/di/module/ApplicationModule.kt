@@ -13,7 +13,6 @@ import com.vicky7230.cambio.di.ApplicationContext
 import com.vicky7230.cambio.di.BaseUrl
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 /**
@@ -31,11 +30,6 @@ class ApplicationModule {
     @Provides
     internal fun provideApplication(cambioApplication: CambioApplication): Application {
         return cambioApplication
-    }
-
-    @Provides
-    internal fun provideCompositeDisposable(): CompositeDisposable {
-        return CompositeDisposable()
     }
 
     /*@Provides

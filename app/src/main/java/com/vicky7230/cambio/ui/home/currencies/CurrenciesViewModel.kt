@@ -5,37 +5,37 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vicky7230.cambio.data.Config
 import com.vicky7230.cambio.data.DataManager
+import com.vicky7230.cambio.data.network.RetrofitResult
 import com.vicky7230.cambio.data.network.model.currencies.Currency
+import com.vicky7230.cambio.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CurrenciesViewModel @Inject constructor(
     private val dataManager: DataManager
-) : ViewModel() {
+) : BaseViewModel() {
 
-    val liveData = MutableLiveData<MutableList<Currency>>()
-    /*fun getWeatherData(lat: String, lng: String): Observable<CurrentWeather> {
-        return dataManager.getCurrentLocationWeather(
-            lat,
-            lng,
-            Config.API_KEY,
-            "metric"
-        )
-    }
-
-    fun getForecastData(lat: String, lng: String): Observable<Forecast> {
-        return dataManager.getCurrentLocationForecast(
-            lat,
-            lng,
-            Config.API_KEY,
-            "metric",
-            "5"
-        )
-    }*/
+    var loading = MutableLiveData<Boolean>()
+    var error = MutableLiveData<String>()
+    val currencies = MutableLiveData<List<Currency>>()
 
     fun getCurrencies() {
         viewModelScope.launch {
-            liveData.value = dataManager.getCurrencies(Config.API_KEY)
+
+            loading.value = true
+
+            val response = safeApiCall { dataManager.getCurrencies(Config.API_KEY) }
+
+            when (response) {
+                is RetrofitResult.Success -> {
+                    currencies.value = response.data
+                }
+                is RetrofitResult.Error -> {
+                    error.value = response.exception.message
+                }
+            }
+
+            loading.value = false
         }
     }
 }

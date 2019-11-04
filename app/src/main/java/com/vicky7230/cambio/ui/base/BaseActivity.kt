@@ -6,6 +6,8 @@ import android.os.Build
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+import com.vicky7230.cambio.R
 import com.vicky7230.cambio.utils.CommonUtils
 import retrofit2.HttpException
 
@@ -31,11 +33,13 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun displayMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+            .show()
     }
 
     private fun displayError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+            .show()
     }
 
     fun showLoading() {
@@ -58,19 +62,5 @@ open class BaseActivity : AppCompatActivity() {
     fun showError(message: String?) {
         if (message != null)
             displayError(message)
-    }
-
-    fun handleApiError(throwable: Throwable) {
-        if (throwable is HttpException) {
-            when (throwable.code()) {
-                401 -> {
-                    showError("sessionId expired or invalid.")
-                    // TODO
-                    // log out the user and clear his data
-                }
-            }
-        } else {
-            showError(throwable.message ?: "")
-        }
     }
 }
