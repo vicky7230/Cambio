@@ -3,13 +3,11 @@ package com.vicky7230.cambio.ui.base
 import android.app.Dialog
 import android.content.pm.PackageManager
 import android.os.Build
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
-import com.vicky7230.cambio.R
 import com.vicky7230.cambio.utils.CommonUtils
-import retrofit2.HttpException
+
 
 /**
  * Created by vicky on 11/2/18.
@@ -38,8 +36,10 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun displayError(message: String) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
-            .show()
+        val snackBar =
+            Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+        snackBar.view.setBackgroundResource(android.R.color.holo_red_light)
+        snackBar.show()
     }
 
     fun showLoading() {

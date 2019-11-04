@@ -8,16 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.vicky7230.cambio.R
 import com.vicky7230.cambio.ui.base.BaseFragment
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_currencies.*
 import javax.inject.Inject
 
 class CurrenciesFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var currenciesAdapter: CurrenciesAdapter
 
     private lateinit var currenciesViewModel: CurrenciesViewModel
 
@@ -46,6 +50,9 @@ class CurrenciesFragment : BaseFragment() {
 
     override fun setUp(view: View) {
 
+        currency_list.layoutManager = LinearLayoutManager(context)
+        currency_list.adapter = currenciesAdapter
+
         currenciesViewModel.loading.observe(this, Observer {
             if (it)
                 showLoading()
@@ -58,10 +65,8 @@ class CurrenciesFragment : BaseFragment() {
         })
 
         currenciesViewModel.currencies.observe(this, Observer {
-            showMessage("Livedata updated")
+            currenciesAdapter.addItems(it)
         })
-
-        showLoading()
 
         currenciesViewModel.getCurrencies()
     }

@@ -20,6 +20,7 @@ class CurrenciesViewModel @Inject constructor(
     val currencies = MutableLiveData<List<Currency>>()
 
     fun getCurrencies() {
+
         viewModelScope.launch {
 
             loading.value = true
@@ -37,5 +38,6 @@ class CurrenciesViewModel @Inject constructor(
 
             loading.value = false
         }
+
     }
 }
