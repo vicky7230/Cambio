@@ -1,14 +1,20 @@
 package com.vicky7230.cambio.ui.home.currencies
 
+import android.graphics.drawable.PictureDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestOptions
 import com.vicky7230.cambio.R
 import com.vicky7230.cambio.data.network.model.currencies.Currency
+import com.vicky7230.cambio.utils.SvgSoftwareLayerSetter
 import kotlinx.android.synthetic.main.currency_list_item.view.*
+
 
 class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
     RecyclerView.Adapter<CurrenciesAdapter.CurrencyViewHolder>() {
@@ -38,14 +44,29 @@ class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
     inner class CurrencyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun onBind(currency: Currency) {
-            itemView.currency_name.text = currency.currency
+            itemView.currency_name.text = currency.name
+            itemView.currency.text = currency.currency
 
-            Glide
-                .with(itemView.context)
-                .load(currency.logoUrl)
-                .apply(RequestOptions.circleCropTransform())
-                .into(itemView.currency_image)
+            if (currency.logoUrl?.contains(".svg")!!) {
 
+                val requestBuilder: RequestBuilder<PictureDrawable> = Glide.with(itemView.context)
+                    .`as`(PictureDrawable::class.java)
+                    .transition(withCrossFade())
+                    .listener(SvgSoftwareLayerSetter())
+
+                requestBuilder
+                    .load(Uri.parse(currency.logoUrl))
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(itemView.currency_image)
+            } else {
+
+                Glide
+                    .with(itemView.context)
+                    .load(currency.logoUrl)
+                    .apply(RequestOptions.circleCropTransform())
+                    .transition(withCrossFade())
+                    .into(itemView.currency_image)
+            }
         }
 
     }

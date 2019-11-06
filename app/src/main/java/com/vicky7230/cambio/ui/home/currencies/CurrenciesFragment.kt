@@ -51,6 +51,7 @@ class CurrenciesFragment : BaseFragment() {
     override fun setUp(view: View) {
 
         currency_list.layoutManager = LinearLayoutManager(context)
+        currency_list.addItemDecoration(ItemOffsetDecoration(resources.getDimensionPixelOffset(R.dimen.currency_list_offset)))
         currency_list.adapter = currenciesAdapter
 
         currenciesViewModel.loading.observe(this, Observer {
