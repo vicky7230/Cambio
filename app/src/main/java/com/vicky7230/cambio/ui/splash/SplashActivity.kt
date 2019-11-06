@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.vicky7230.cambio.R
-import com.vicky7230.cambio.ui.home.HomeActivity
+import com.vicky7230.cambio.ui.currencies.CurrenciesActivity
 
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         handler = Handler()
 
         handler.postDelayed({
-            startActivity(HomeActivity.getStartIntent(this@SplashActivity))
+            startActivity(CurrenciesActivity.getStartIntent(this@SplashActivity))
             finish()
         }, 1500)
 

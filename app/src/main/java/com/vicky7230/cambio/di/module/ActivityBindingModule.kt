@@ -1,8 +1,7 @@
 package com.vicky7230.cambio.di.module
 
-import com.vicky7230.cambio.ui.home.FragmentProvider
-import com.vicky7230.cambio.ui.home.HomeActivity
-import com.vicky7230.cambio.ui.home.HomeModule
+import com.vicky7230.cambio.ui.currencies.CurrenciesModule
+import com.vicky7230.cambio.ui.currencies.CurrenciesActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,8 +11,8 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBindingModule {
 
-    @ContributesAndroidInjector(modules = [(HomeModule::class), (FragmentProvider::class)])
-    abstract fun bindHomeActivity(): HomeActivity
+    @ContributesAndroidInjector(modules = [(CurrenciesModule::class)])
+    abstract fun bindCurrencyActivity(): CurrenciesActivity
 
     /*@ContributesAndroidInjector(modules = [(AddCityModule::class)])
     abstract fun bindAddCityActivity(): AddCityActivity

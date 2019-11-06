@@ -1,7 +1,6 @@
-package com.vicky7230.cambio.ui.home.currencies
+package com.vicky7230.cambio.ui.currencies
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vicky7230.cambio.data.Config
 import com.vicky7230.cambio.data.DataManager

@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vicky7230.cambio.ui.home.HomeActivity"
+            android:name="com.vicky7230.cambio.ui.currencies.CurrenciesActivity"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

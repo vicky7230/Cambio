@@ -1,22 +1,19 @@
-package com.vicky7230.cambio.ui.home.currencies
-
+package com.vicky7230.cambio.ui.currencies
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.vicky7230.cambio.R
-import com.vicky7230.cambio.ui.base.BaseFragment
-import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_currencies.*
+import com.vicky7230.cambio.ui.base.BaseActivity
+import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-class CurrenciesFragment : BaseFragment() {
+
+class CurrenciesActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -26,32 +23,31 @@ class CurrenciesFragment : BaseFragment() {
     private lateinit var currenciesViewModel: CurrenciesViewModel
 
     companion object {
-        fun newInstance() = CurrenciesFragment()
+        fun getStartIntent(context: Context): Intent {
+            return Intent(context, CurrenciesActivity::class.java)
+        }
     }
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_currencies, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
         currenciesViewModel = ViewModelProvider(
             this,
             viewModelFactory
         )[CurrenciesViewModel::class.java]
 
-        return view
+        init()
     }
 
-    override fun setUp(view: View) {
-
-        currency_list.layoutManager = LinearLayoutManager(context)
-        currency_list.addItemDecoration(ItemOffsetDecoration(resources.getDimensionPixelOffset(R.dimen.currency_list_offset)))
+    private fun init() {
+        currency_list.layoutManager = LinearLayoutManager(this)
+        currency_list.addItemDecoration(
+            ItemOffsetDecoration(
+                resources.getDimensionPixelOffset(R.dimen.currency_list_offset)
+            )
+        )
         currency_list.adapter = currenciesAdapter
 
         currenciesViewModel.loading.observe(this, Observer {

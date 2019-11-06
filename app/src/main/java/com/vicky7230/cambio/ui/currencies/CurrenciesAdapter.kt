@@ -1,4 +1,4 @@
-package com.vicky7230.cambio.ui.home.currencies
+package com.vicky7230.cambio.ui.currencies
 
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
@@ -47,25 +47,29 @@ class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
             itemView.currency_name.text = currency.name
             itemView.currency.text = currency.currency
 
-            if (currency.logoUrl?.contains(".svg")!!) {
+            currency.logoUrl?.let {
 
-                val requestBuilder: RequestBuilder<PictureDrawable> = Glide.with(itemView.context)
-                    .`as`(PictureDrawable::class.java)
-                    .transition(withCrossFade())
-                    .listener(SvgSoftwareLayerSetter())
+                if (it.contains(".svg")) {
 
-                requestBuilder
-                    .load(Uri.parse(currency.logoUrl))
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(itemView.currency_image)
-            } else {
+                    val requestBuilder: RequestBuilder<PictureDrawable> =
+                        Glide.with(itemView.context)
+                            .`as`(PictureDrawable::class.java)
+                            .transition(withCrossFade())
+                            .listener(SvgSoftwareLayerSetter())
 
-                Glide
-                    .with(itemView.context)
-                    .load(currency.logoUrl)
-                    .apply(RequestOptions.circleCropTransform())
-                    .transition(withCrossFade())
-                    .into(itemView.currency_image)
+                    requestBuilder
+                        .load(Uri.parse(currency.logoUrl))
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(itemView.currency_image)
+                } else {
+
+                    Glide
+                        .with(itemView.context)
+                        .load(currency.logoUrl)
+                        .apply(RequestOptions.circleCropTransform())
+                        .transition(withCrossFade())
+                        .into(itemView.currency_image)
+                }
             }
         }
 

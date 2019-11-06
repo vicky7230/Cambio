@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vicky7230.cambio.ViewModelFactory
 import com.vicky7230.cambio.di.ViewModelKey
-import com.vicky7230.cambio.ui.home.currencies.CurrenciesViewModel
+import com.vicky7230.cambio.ui.currencies.CurrenciesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,7 +18,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(CurrenciesViewModel::class)
-    internal abstract fun postWeatherViewModel(viewModel: CurrenciesViewModel): ViewModel
+    internal abstract fun postCurrenciesViewModel(viewModel: CurrenciesViewModel): ViewModel
 
     /*@Binds
     @IntoMap
