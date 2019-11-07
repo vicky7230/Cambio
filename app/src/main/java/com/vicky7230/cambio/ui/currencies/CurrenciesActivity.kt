@@ -3,6 +3,7 @@ package com.vicky7230.cambio.ui.currencies
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,6 +43,9 @@ class CurrenciesActivity : BaseActivity() {
     }
 
     private fun init() {
+
+        setSupportActionBar(toolbar)
+
         currency_list.layoutManager = LinearLayoutManager(this)
         currency_list.addItemDecoration(
             ItemOffsetDecoration(
@@ -66,5 +70,10 @@ class CurrenciesActivity : BaseActivity() {
         })
 
         currenciesViewModel.getCurrencies()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_currencies_activity, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

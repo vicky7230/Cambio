@@ -12,9 +12,13 @@ class ItemOffsetDecoration(private val offset: Int) :
         parent: androidx.recyclerview.widget.RecyclerView,
         state: androidx.recyclerview.widget.RecyclerView.State
     ) {
+        if (parent.getChildAdapterPosition(view) == 0) {
+            outRect.top = offset
+        } else
+            outRect.top = offset / 2
+
         outRect.left = offset
         outRect.right = offset
         outRect.bottom = offset / 2
-        outRect.top = offset / 2
     }
 }

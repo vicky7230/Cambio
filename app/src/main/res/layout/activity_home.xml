@@ -9,13 +9,11 @@
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary" />
+            android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/currency_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="7dp" />
+            android:layout_height="match_parent" />
 
 </LinearLayout>

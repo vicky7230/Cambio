@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.bumptech.glide.request.RequestOptions
 import com.vicky7230.cambio.R
 import com.vicky7230.cambio.data.network.model.currencies.Currency
 import com.vicky7230.cambio.utils.SvgSoftwareLayerSetter
 import kotlinx.android.synthetic.main.currency_list_item.view.*
+import java.text.NumberFormat
+import java.util.*
 
 
 class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
@@ -46,6 +47,8 @@ class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
         fun onBind(currency: Currency) {
             itemView.currency_name.text = currency.name
             itemView.currency.text = currency.currency
+            itemView.price.text =
+                NumberFormat.getCurrencyInstance(Locale.US).format(currency.price?.toDouble())
 
             currency.logoUrl?.let {
 
@@ -59,14 +62,14 @@ class CurrenciesAdapter(private var currencies: MutableList<Currency>) :
 
                     requestBuilder
                         .load(Uri.parse(currency.logoUrl))
-                        .apply(RequestOptions.circleCropTransform())
+                        //.apply(RequestOptions.circleCropTransform())
                         .into(itemView.currency_image)
                 } else {
 
                     Glide
                         .with(itemView.context)
                         .load(currency.logoUrl)
-                        .apply(RequestOptions.circleCropTransform())
+                        //.apply(RequestOptions.circleCropTransform())
                         .transition(withCrossFade())
                         .into(itemView.currency_image)
                 }
