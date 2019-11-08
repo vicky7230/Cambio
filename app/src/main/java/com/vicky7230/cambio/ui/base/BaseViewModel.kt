@@ -2,6 +2,7 @@ package com.vicky7230.cambio.ui.base
 
 import androidx.lifecycle.ViewModel
 import com.vicky7230.cambio.data.network.RetrofitResult
+import kotlinx.coroutines.CancellationException
 import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
@@ -33,6 +34,9 @@ open class BaseViewModel : ViewModel() {
                 }
             }
         } catch (e: Exception) {
+            if(e is CancellationException){
+                Timber.d("Job was Cancelled....")
+            }
             //Log exception
             Timber.e(e)
             return RetrofitResult.Error(IOException(e))
