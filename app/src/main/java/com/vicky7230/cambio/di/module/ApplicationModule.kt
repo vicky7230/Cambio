@@ -7,6 +7,9 @@ import com.vicky7230.cambio.CambioApplication
 import com.vicky7230.cambio.data.AppDataManager
 import com.vicky7230.cambio.data.Config
 import com.vicky7230.cambio.data.DataManager
+import com.vicky7230.cambio.data.db.AppDbHelper
+import com.vicky7230.cambio.data.db.DbHelper
+import com.vicky7230.cambio.data.db.room.AppDatabase
 import com.vicky7230.cambio.data.network.ApiHelper
 import com.vicky7230.cambio.data.network.AppApiHelper
 import com.vicky7230.cambio.di.ApplicationContext
@@ -32,11 +35,11 @@ class ApplicationModule {
         return cambioApplication
     }
 
-    /*@Provides
+    @Provides
     @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, Config.DB_NAME).build()
-    }*/
+        return AppDatabase.getInstance(context)!!
+    }
 
     @Provides
     @BaseUrl
@@ -49,12 +52,12 @@ class ApplicationModule {
     internal fun provideDataManager(appDataManager: AppDataManager): DataManager {
         return appDataManager
     }
-/*
+
     @Provides
     @Singleton
     internal fun provideDbHelper(appDbHelper: AppDbHelper): DbHelper {
         return appDbHelper
-    }*/
+    }
 
     @Provides
     @Singleton

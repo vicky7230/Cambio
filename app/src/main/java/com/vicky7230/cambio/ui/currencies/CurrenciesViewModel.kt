@@ -1,5 +1,6 @@
 package com.vicky7230.cambio.ui.currencies
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vicky7230.cambio.data.Config
@@ -16,19 +17,20 @@ class CurrenciesViewModel @Inject constructor(
 
     var loading = MutableLiveData<Boolean>()
     var error = MutableLiveData<String>()
-    val currencies = MutableLiveData<List<Currency>>()
+    val currencies: LiveData<List<Currency>> = dataManager.loadAllCurrencies()
 
     fun getCurrencies() {
 
         viewModelScope.launch {
 
-            loading.value = true
+            //loading.value = true
 
             val response = safeApiCall { dataManager.getCurrencies(Config.API_KEY) }
 
             when (response) {
                 is RetrofitResult.Success -> {
-                    currencies.value = response.data
+                    //currencies.value = response.data
+                    dataManager.insertCurrencies(response.data)
                 }
                 is RetrofitResult.Error -> {
                     error.value = response.exception.message

@@ -27,10 +27,13 @@
             android:fontFamily="@font/roboto_condensed_bold"
             android:textColor="@android:color/white"
             android:textSize="16sp"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:ellipsize="end"
             app:layout_constraintBottom_toTopOf="@id/currency"
             app:layout_constraintLeft_toRightOf="@id/currency_image"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="BitCoin" />
+            tools:text="1234567891234567890" />
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/currency"
@@ -51,11 +54,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:textSize="16sp"
-            app:layout_constraintHorizontal_bias="0.65"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/roboto_condensed_bold"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/currency_name"
             tools:text="$ 123,455,2" />
 
 
