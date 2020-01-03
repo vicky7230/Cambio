@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.vicky7230.cambio.data.db.AppDbHelper
 import com.vicky7230.cambio.data.network.AppApiHelper
 import com.vicky7230.cambio.data.network.model.currencies.Currency
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -21,7 +22,7 @@ constructor(
         return appDbHelper.insertCurrencies(currencies)
     }
 
-    override fun loadAllCurrencies(): LiveData<List<Currency>> {
+    override fun loadAllCurrencies(): Flow<List<Currency>> {
         return appDbHelper.loadAllCurrencies()
     }
 

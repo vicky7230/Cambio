@@ -1,8 +1,6 @@
 package com.vicky7230.cambio.ui.currencies
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.vicky7230.cambio.data.Config
 import com.vicky7230.cambio.data.DataManager
 import com.vicky7230.cambio.data.network.RetrofitResult
@@ -17,7 +15,7 @@ class CurrenciesViewModel @Inject constructor(
 
     var loading = MutableLiveData<Boolean>()
     var error = MutableLiveData<String>()
-    val currencies: LiveData<List<Currency>> = dataManager.loadAllCurrencies()
+    val currencies: LiveData<List<Currency>> = dataManager.loadAllCurrencies().asLiveData()
 
     fun getCurrencies() {
 

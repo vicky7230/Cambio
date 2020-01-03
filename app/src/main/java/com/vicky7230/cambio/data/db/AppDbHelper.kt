@@ -1,8 +1,8 @@
 package com.vicky7230.cambio.data.db
 
-import androidx.lifecycle.LiveData
 import com.vicky7230.cambio.data.db.room.AppDatabase
 import com.vicky7230.cambio.data.network.model.currencies.Currency
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class AppDbHelper @Inject constructor(private val appDatabase: AppDatabase) : DbHelper {
@@ -11,7 +11,7 @@ class AppDbHelper @Inject constructor(private val appDatabase: AppDatabase) : Db
         return appDatabase.currencyDao().insertCurrencies(currencies)
     }
 
-    override fun loadAllCurrencies(): LiveData<List<Currency>> {
+    override fun loadAllCurrencies(): Flow<List<Currency>> {
         return appDatabase.currencyDao().loadAllCurrencies()
     }
 

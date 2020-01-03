@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.vicky7230.cambio.data.db.room.dao.CurrencyDao
 import com.vicky7230.cambio.data.network.model.currencies.Currency
 
-@Database(entities = [Currency::class], version = 1)
+@Database(entities = [Currency::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun currencyDao(): CurrencyDao
